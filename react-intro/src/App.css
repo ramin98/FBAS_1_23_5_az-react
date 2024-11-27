@@ -1,0 +1,48 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header{
+  padding: 30px;
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+
+footer{
+  padding: 30px;
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+
+main{
+  margin-bottom: auto;
+}
+
+.services-list{
+  margin-top: 20px;
+}
+
+.services-list ul{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 30px;
+  gap: 30px 30px;
+}
+
+.services-list ul li{
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
