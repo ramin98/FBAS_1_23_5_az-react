@@ -46,3 +46,12 @@ main{
   flex-direction: column;
   gap: 8px;
 }
+
+form{
+  margin: auto;
+  margin-top: 40px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

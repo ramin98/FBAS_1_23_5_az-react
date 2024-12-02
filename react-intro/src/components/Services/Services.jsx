@@ -1,7 +1,11 @@
 import ServicesItem from "./ServicesItem";
 import { services } from "../../../public/data/data";
+import { useState } from "react";
 
-function Services() {
+function Services({servicesArray}) {
+
+  
+  
   return (
     <section className="services-list">
       <ul>
@@ -53,7 +57,7 @@ function Services() {
           serviceDescription={services[11].serviceDescription}
           serviceName={services[11].serviceName}
         /> */}
-        {services.map((item, index) => (
+        {servicesArray.map((item, index) => (
           <ServicesItem
             key={index}
             serviceDescription={item.serviceDescription}
