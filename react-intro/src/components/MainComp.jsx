@@ -9,7 +9,7 @@ function MainComp() {
     return (
       <main>
         <AddForm servicesArray={servicesArray} setServices={setServices}/>
-        <Services servicesArray={servicesArray}/>
+        <Services setServices={setServices} servicesArray={servicesArray}/>
       </main>
     )
   }

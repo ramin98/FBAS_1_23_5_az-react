@@ -55,3 +55,7 @@ form{
   flex-direction: column;
   gap: 10px;
 }
+
+.hide{
+  display: none;
+}
