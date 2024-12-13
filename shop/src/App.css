@@ -1,0 +1,27 @@
+#root{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+main{
+  padding: 30px;
+  margin-bottom: auto;
+}
+
+header,footer{
+  padding: 50px;
+  background-color: black;
+  color: white;
+}
+
+header nav ul li a{
+  color: white;
+  font-size: 30px;
+}
+
+header nav ul{
+  display: flex;
+  gap: 20px;
+}
