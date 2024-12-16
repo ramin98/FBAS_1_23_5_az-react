@@ -2,7 +2,7 @@ import BagList from "../Bag/BagList";
 
 function BagPage() {
   return (
-    <section className="products-page">
+    <section>
       <h1>Bage Page</h1>
       <BagList/>
     </section>
