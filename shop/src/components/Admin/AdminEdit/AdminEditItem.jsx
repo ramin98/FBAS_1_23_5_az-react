@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import EditForm from "./EditForm";
+import { MyContext } from "../../../App";
 
 function AdminEdiItem({ product_name, product_description, product_price, url ,id }) {
+
+  let {editAdminDispatch} = useContext(MyContext)
+
   return (
     <>
       <li>
@@ -8,6 +13,7 @@ function AdminEdiItem({ product_name, product_description, product_price, url ,i
       <p>{product_description}</p>
       <p>{product_price}</p>
       <img src={url} alt={product_name} />
+      <button onClick={() => editAdminDispatch({type:'DELETE', payload: id})}>DELETE</button>
       <EditForm product={{product_name, product_description, product_price,id}}/>
       </li>
     </>
