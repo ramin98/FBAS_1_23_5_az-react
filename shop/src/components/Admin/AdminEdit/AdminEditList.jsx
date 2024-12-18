@@ -9,7 +9,7 @@ function AdminEditList() {
   useEffect(() => {
     getProducts(editAdminDispatch);
   }, []);
-
+ console.log(editAdminState.products)
   return (
     <ul>
       {editAdminState.products.map((item) => (

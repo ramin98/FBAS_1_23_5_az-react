@@ -4,13 +4,26 @@ export async function getOrders(dispatch) {
     dispatch({type:'GET ORDERS', payload: data})
 }
 
-export async function addProductFetch(product) {
+export async function addProductFetch(formData,product, dispatch) {
     let res = await fetch("http://localhost:5000/add-admin", {
       method: "POST",
-      body: product,
+      body: formData,
     });
   
     let data = await res.json();
+    dispatch({type:'ADD', payload: {...product, id: data.id}})
+
+    console.log(data);
+  }
+  
+  export async function editProductFetch(formData, id) {
+    let res = await fetch("http://localhost:5000/change-admin/" + id, {
+      method: "PUT",
+      body: formData,
+    });
+  
+    let data = await res.json();
+
     console.log(data);
   }
   
