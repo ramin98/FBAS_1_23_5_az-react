@@ -32,7 +32,7 @@ export let initialObjectEditAdmin = {
 
     else if (action.type === "CHOOSE ALL") {
       let newArr = [...state.idArray]
-      if(action.payload.id && action.payload.id){
+      if(action.payload.id){
         newArr.push()
       }
       return { ...state, idArray: newArr };

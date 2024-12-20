@@ -1,19 +1,19 @@
-import { useContext, useEffect } from "react";
-import { MyContext } from "../../App";
-import { getOrders } from "../../reducers/reducerFetchs/adminFetchs";
+import { useEffect } from "react";
 import AdminItem from "./AdminItem";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrders } from "../../store/reducers/reducerFetchs/adminFetchs";
 
 function AdminList() {
-  let { adminState, adminDispatch } = useContext(MyContext);
+  let orders = useSelector((state) => state.admin.orders)
+  let dispatch = useDispatch()
 
   useEffect(() => {
-    getOrders(adminDispatch);
+    dispatch(getOrders());
   }, []);
 
-  console.log(adminState)
   return (
     <ul>
-      {adminState.orders.map((item) => (
+      {orders.map((item) => (
         <AdminItem key={item.id} {...item} />
       ))}
     </ul>

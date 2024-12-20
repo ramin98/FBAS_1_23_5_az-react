@@ -1,9 +1,9 @@
-import { useContext, useRef } from "react";
-import { MyContext } from "../../../App";
-import { addProductFetch, editProductFetch } from "../../../reducers/reducerFetchs/adminFetchs";
+import { useRef } from "react";
+import { editProductFetch } from "../../../store/reducers/reducerFetchs/adminFetchs";
+import { useDispatch } from "react-redux";
 
 function EditForm({product}) {
-  let { editAdminDispatch } = useContext(MyContext);
+  let dispatch = useDispatch()
   let url = useRef(null);
 
   function handleEditForm(ev) {
@@ -33,7 +33,7 @@ function EditForm({product}) {
 
       formData.append("data", JSON.stringify(productObject));
       formData.append("file", file);
-      editAdminDispatch({type:'EDIT', payload: {productObject, id: product.id}})
+      dispatch({type:'EDIT', payload: {productObject, id: product.id}})
 
       editProductFetch(formData, product.id);
     };

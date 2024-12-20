@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import EditForm from "./EditForm";
-import { MyContext } from "../../../App";
 
 function AdminEdiItem({ product_name, product_description, product_price, url ,id }) {
 
-  let {editAdminDispatch} = useContext(MyContext)
+  let dispatch = useDispatch()
+  let ids = useSelector((state) => state.adminEdit.ids)
 
   return (
     <>
@@ -13,8 +13,8 @@ function AdminEdiItem({ product_name, product_description, product_price, url ,i
       <p>{product_description}</p>
       <p>{product_price}</p>
       <img src={url} alt={product_name} />
-      <button onClick={() => editAdminDispatch({type:'DELETE', payload: id})}>DELETE</button>
-      <input onChange={(ev) => editAdminDispatch({type:'CHOOSE ALL', payload: {id, checked: ev.target.checked}})} type="checkbox" />
+      <button onClick={() => dispatch({type:'DELETE', payload: id})}>DELETE</button>
+      <input checked={ids.includes(id)} onChange={() => dispatch({type:'CHOOSE ALL', payload: id})} type="checkbox" />
       <EditForm product={{product_name, product_description, product_price,id}}/>
       </li>
     </>
