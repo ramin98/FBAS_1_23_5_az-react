@@ -1,4 +1,4 @@
-import { deleteProduct } from "../reducerFetchs/adminFetchs";
+import { deleteAllProductFetch, deleteProduct } from "../reducerFetchs/adminFetchs";
 
 export let initialObjectEditAdmin = {
     products: [],
@@ -32,18 +32,22 @@ export let initialObjectEditAdmin = {
 
     else if (action.type === "CHOOSE ALL") {
       let newArr = [...state.idArray]
-      if(action.payload.id){
-        newArr.push()
+      let index = newArr.findIndex((item) => item.id === action.payload)
+
+      if(newArr.includes(action.payload)){
+        newArr.splice(index, 1)
+      }else{
+        newArr.push(action.payload)
       }
       return { ...state, idArray: newArr };
     }
 
     else if (action.type === "DELETE ALL") {
       let newArr = [...state.products]
-      let index = newArr.findIndex((item) => item.id === action.payload)
-      deleteProduct(action.payload)
-      newArr.splice(index, 1)
-      return { ...state, products: newArr };
+      let ids = [...state.idArray]
+      let filteredArray = newArr.filter((item) => !ids.includes(item.id))
+      deleteAllProductFetch(ids)
+      return { ...state, products: filteredArray };
     }
   
     return state;

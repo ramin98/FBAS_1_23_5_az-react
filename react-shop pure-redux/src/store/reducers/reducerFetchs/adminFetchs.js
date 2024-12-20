@@ -38,7 +38,6 @@ export async function addProductFetch(formData,product, dispatch) {
     });
   
     let data = await res.json();
-
     console.log(data);
   }
   
