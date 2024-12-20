@@ -1,0 +1,54 @@
+export  function getOrders() {
+  return async function (dispatch){
+    let response = await fetch('http://localhost:5000/orders')
+    let data = await response.json()
+    dispatch({type:'GET ORDERS', payload: data})
+  }
+    
+}
+
+export async function deleteProduct(id) {
+  console.log(id)
+  let response = await fetch('http://localhost:5000/delete-admin/' + id, {
+    method:'DELETE'
+  })
+  let data = await response.json()
+  console.log(data);
+}
+
+export async function addProductFetch(formData,product, dispatch) {
+    let res = await fetch("http://localhost:5000/add-admin", {
+      method: "POST",
+      body: formData,
+    });
+  
+    let data = await res.json();
+    dispatch({type:'ADD', payload: {...product, id: data.id}})
+
+    console.log(data);
+  }
+
+  export async function deleteAllProductFetch(idArray) {
+    let res = await fetch("http://localhost:5000/delete-admin/multiple", {
+      method: "DELETE",
+      headers:{
+        'Content-type':'application/json'
+      },
+      body: JSON.stringify({ids: idArray}),
+    });
+  
+    let data = await res.json();
+    console.log(data);
+  }
+  
+  export async function editProductFetch(formData, id) {
+    let res = await fetch("http://localhost:5000/change-admin/" + id, {
+      method: "PUT",
+      body: formData,
+    });
+  
+    let data = await res.json();
+
+    console.log(data);
+  }
+  
